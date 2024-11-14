@@ -1,0 +1,649 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #f37d52 transparent;
+  scroll-behavior: smooth;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: local('Helvetica'), url('../fonts/Helvetica.ttf') format('truetype');
+}
+::-webkit-scrollbar {
+  width: 0.25em;
+  height: 0.25em;
+}
+::-webkit-scrollbar-thumb {
+  background: #f37d52;
+  border-radius: 10em;
+}
+/* 
+theme:#f15a24
+
+theme_light:#f37d52
+theme_light:#f37d52 orange
+
+theme_extra_light:#f37a4e
+theme_extra_light:#f37a4e orange
+
+hover_color:#ec6737
+hover_color:#ec6737 orange
+*/
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+*:disabled {
+  cursor: not-allowed;
+}
+
+@layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+  html {
+    font-family: 'Helvetica', sans-serif;
+  }
+}
+@layer components {
+  .main-container {
+    @apply container mx-auto px-6;
+  }
+}
+/* theme color */
+/* .theme-color{
+  color: #f37d52;
+  color: #f37a4e;
+} */
+/* ----------------------------------------------------------------------------------- */
+/* category List styling */
+.cat-hover:hover .cat-hover-div {
+  display: flex;
+}
+
+/* ----------------------------------------------------------------------------------- */
+/* Footer styling */
+
+.footer-li::after {
+  position: absolute;
+  background-color: #f15a24;
+  bottom: 0px;
+  content: '';
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+  left: 5px;
+  width: 95%;
+}
+.footer-li:hover::after {
+  transform: scale(1);
+  transform-origin: right;
+}
+
+.notched-outline {
+  border: none !important;
+}
+
+.form-textfield {
+  background-color: rgb(238, 235, 235) !important;
+  padding-top: 0.8rem !important;
+  padding-bottom: 0.75rem !important;
+  font-size: 0.9rem !important;
+  border-radius: 30px 0px 0px 30px !important;
+}
+/* --------------------------------------------------------------------------------- */
+/* card design styling */
+
+.active-index {
+  position: relative;
+  /* color: #ec6737; */
+  transition: all 0.2s ease-in-out;
+}
+
+.active-index::after {
+  transition: all 0.5s ease-in-out;
+  content: '';
+  background-color: #f15a24 !important;
+  bottom: 0px;
+  height: 3px;
+  border-radius: 10px;
+  position: absolute !important;
+  transform: scaleX(1);
+  transform-origin: left;
+  left: 0;
+  width: 40%;
+}
+.active-index::before {
+  transition: all 0.5s ease-in-out;
+  content: '';
+  background-color: #f15a24 !important;
+  bottom: 0px;
+  height: 3px;
+  border-radius: 10px;
+  position: absolute !important;
+  transform: scaleX(1);
+  transform-origin: left;
+  left: 45%;
+  width: 1em;
+}
+
+.hover-effect::after {
+  background-color: #f15a24;
+  bottom: 0px;
+  content: '';
+  height: 3px;
+  border-radius: 10px;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+  left: 0;
+  width: 100%;
+}
+.hover-effect:hover::after {
+  transform: scale(1);
+  transform-origin: left;
+}
+/* ------------------------------------------------------------------------------------ */
+.animate-text {
+  background: linear-gradient(-45deg, #ec6737, #76f34f, #ffe5b3, #e89a3e);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animated_text 8s ease-in-out infinite;
+  -moz-animation: animated_text 8s ease-in-out infinite;
+  -webkit-animation: animated_text 8s ease-in-out infinite;
+}
+
+@keyframes animated_text {
+  0% {
+    background-position: 0px 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0px 50%;
+  }
+}
+
+/* ----------------------------------------------------------------------------------------- */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.company-slick-slider .slick-track {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* Demo category section card design */
+.discount-card:hover::before {
+  animation: shine 1.3s;
+  display: block;
+}
+.discount-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  display: none;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  transform: skewX(-25deg);
+}
+@keyframes shine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  100% {
+    left: 100%;
+    opacity: 1;
+  }
+}
+.new-btn:hover::before {
+  animation: shine 1.3s;
+  display: block;
+}
+.new-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  display: none;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(35, 196, 14, 0) 0%,
+    rgba(201, 245, 210, 0.3) 100%
+  );
+  transform: skewX(-25deg);
+}
+
+/* --------------------------------------------------------------------------------------------- */
+/* browse Category */
+.second-group:hover .browse-category {
+  visibility: visible;
+  animation: fade 1s ease-in-out both;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-1rem);
+}
+.browse-category {
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(2rem);
+  animation: fade-out 1s ease-in-out both;
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* -------------------------------------------------------------------------------------------- */
+/* Products section styling */
+
+.sorting-select-outline {
+  border: 1px solid rgb(218, 214, 214) !important;
+}
+
+.arrow-animation {
+  animation: arrow 1s ease-in-out;
+}
+@keyframes arrow {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.main-btn .Mui-selected {
+  background-color: #f15a24 !important;
+}
+/* ------------------------------------------------------------------------------------------- */
+/* Coupon section styling */
+.coupon-select-outline {
+  border: 1px solid rgb(186, 183, 183) !important;
+  border-radius: 0.25rem !important;
+}
+.coupon-select-input {
+  display: flex !important;
+  align-items: center !important;
+  height: 1.875rem !important;
+  font-size: 14px !important;
+  padding: 2px 16px !important;
+}
+
+/* -------------------------------------------------------------------------------------------- */
+/* Sign-in styling */
+
+.login-notched-outline {
+  border: none !important;
+  border-left: 1px solid #f1f1f1 !important;
+  border-radius: 0 !important;
+}
+.mui-textfield-input {
+  height: 0.5rem !important;
+}
+
+/* Swal2 ZIndex issue fixed */
+
+.swal2-container {
+  z-index: 3023 !important;
+}
+
+/* Rotate Animation */
+
+.rotate-animation {
+  animation: rotate-animation 1s linear infinite;
+}
+
+@keyframes rotate-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* nprogress css */
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #ffe5b3;
+
+  position: fixed;
+  z-index: 2021;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #f15a24, 0 0 5px #f15a24;
+  opacity: 1;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 2021;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: #f15a24;
+  border-left-color: #f15a24;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+  animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes nprogress-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ------------------------------------------------------------------------------------------- */
+/* Order Details/ProgressBar styling*/
+
+.OrderMetaData,
+.OrderDetailSection,
+.OrderProgressSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background-color: #F3F4F6; */
+  /* background-color: var(--colorB); */
+  border-radius: 0.5em;
+  width: 100%;
+  padding: 2em 0em;
+}
+.OrderMetaData {
+  flex-direction: row;
+  gap: 1em;
+  padding: 2em 1em;
+}
+.OrderDetailSection {
+  flex-direction: row;
+}
+.OrderProgressSection {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1em;
+}
+.OrderAddressSection {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1em;
+}
+.OrderProductInfoSection {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.ProductImageSection {
+  width: 30%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 1em;
+}
+.ProductInfoSection {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5em;
+  text-transform: capitalize;
+}
+.OrderProgressSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1em;
+  /* gap: 5em; */
+}
+.OrderProgressSectionHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.OrderLongName {
+  display: block;
+}
+.OrderShortName {
+  display: none;
+}
+/* status progressBar */
+.StatusProgressWarper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 1em;
+}
+.StatusProgressWarper .status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  height: 2em;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.StatusProgressWarper .status-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  /* height: 2em; */
+  /* font-size: 0.75rem; */
+  cursor: pointer;
+}
+.StatusProgressWarper .status::after {
+  content: '';
+  height: 0.75em;
+  width: 0.75em;
+  /* background-color: var(--colorA); */
+  background-color: #ec6737;
+  bottom: 0.5px;
+  position: absolute;
+  border-radius: 50%;
+}
+.StatusProgressWarper .progressBar {
+  position: absolute;
+  /* background-color: var(--colorA); */
+  background-color: #ec6737;
+  width: 5%;
+  height: 0.2em;
+  bottom: 0px;
+  transform: translateY(-100%);
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.MoreActionSectionWarper {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #f3f4f6;
+  /* background-color: var(--colorB); */
+  gap: 1em;
+}
+.MoreActionSections {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: #f3f4f6;
+  /* background-color: var(--colorB); */
+}
+
+/* -----------------------------------Business Page Styling----------------------------------------------*/
+.business-text-field {
+  background-color: white !important;
+}
+
+.custom-input input,
+input::-webkit-input-placeholder {
+  font-size: 12px;
+  line-height: 3;
+  /* font-weight: 300; */
+}
+/* -----------------Dashboard----------------------------------------------------------------------------*/
+
+.dashboard-main .Mui-selected,
+.dashboard-main .Mui-selected:hover {
+  @apply !bg-theme;
+  color: #fff !important;
+  transition: all 0.3s ease-in-out;
+}
+.dashboard-main .Mui-selected .MuiListItemIcon-root {
+  color: #fff !important;
+}
+.btn-background:disabled,
+.btn-background[disabled] {
+  background: #cccccc !important;
+  color: #666666 !important;
+}
+
+/* ---------------------------------------------------------Info Icon-------------------------------------- */
+.icon {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

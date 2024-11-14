@@ -1,0 +1,120 @@
+import countryList from 'configs/country'
+import STATES from 'configs/states'
+import * as Yup from 'yup'
+export default () => [
+  {
+    key: '1',
+    placeholder: 'Enter your name',
+    name: 'name',
+    type: 'text',
+    validationSchema: Yup.string()
+      .required('required')
+      .min(2, 'Name must be at least 2 characters'),
+    initialValue: '',
+    required: true,
+    lg: 6,
+  },
+  {
+    key: '2',
+    placeholder: 'Enter your email',
+    name: 'email',
+    type: 'email',
+    validationSchema: Yup.string()
+      .required('Email is required')
+      .email('Invalid Email Address'),
+    initialValue: '',
+    required: true,
+    lg: 6,
+  },
+  {
+    key: '3',
+    placeholder: 'Enter your phone number',
+    name: 'phone',
+    type: 'text',
+    validationSchema: Yup.string().required('Phone number is required'),
+    initialValue: '',
+    required: true,
+    lg: 6,
+  },
+  {
+    key: '4',
+    placeholder: 'Pincode',
+    name: 'pincode',
+    type: 'text',
+    validationSchema: Yup.string().required('Pincode is required'),
+    initialValue: '',
+    required: true,
+    lg: 6,
+  },
+  {
+    key: '5',
+    placeholder: 'Street',
+    name: 'street',
+    type: 'text',
+    multiline: true,
+    validationSchema: Yup.string()
+      .max(80, "Street can't be more than 80 characters")
+      .required('Street is required'),
+    initialValue: '',
+    required: true,
+    lg: 12,
+  },
+  {
+    key: '6',
+    placeholder: 'City/District/Town',
+    name: 'city',
+    type: 'text',
+    validationSchema: Yup.string().required('required'),
+    initialValue: '',
+    required: true,
+    lg: 6,
+  },
+  {
+    key: '7',
+    placeholder: 'Select your state',
+    name: 'state',
+    type: 'select',
+    validationSchema: Yup.string().required('required'),
+    initialValue: '',
+    options: STATES.map((state) => ({
+      key: state,
+      value: state,
+    })),
+    required: true,
+    lg: 6,
+  },
+  {
+    key: '8',
+    placeholder: 'Landmark (optional)',
+    name: 'landmark',
+    type: 'text',
+    validationSchema: Yup.string(),
+    initialValue: '',
+    // required: true,
+    lg: 6,
+  },
+  {
+    key: '9',
+    placeholder: 'Select your country',
+    name: 'country',
+    type: 'select',
+    validationSchema: Yup.string().required('required'),
+    initialValue: '',
+    defaultValue: 'India',
+    options: countryList.map((country) => ({
+      key: country,
+      value: country,
+    })),
+    required: true,
+    lg: 6,
+  },
+  {
+    key: '10',
+    placeholder: '',
+    name: 'addressType',
+    type: 'radio',
+    validationSchema: Yup.string(),
+    initialValue: 'Home',
+    lg: 12,
+  },
+]
